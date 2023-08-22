@@ -29,6 +29,8 @@ class Tags(BaseModel):
         verbose_name = "タグ"
         verbose_name_plural = "タグ"
     
+    def __str__(self):
+        return self.name
 
 
 class Questions(BaseModel):
@@ -50,6 +52,9 @@ class Questions(BaseModel):
         verbose_name = "質問記事"
         verbose_name_plural = "質問記事"
 
+    def __str__(self):
+        return self.title
+
 class Answers(BaseModel):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name="回答者", null=True, blank=True)
     questions = models.ForeignKey(Questions, verbose_name="質問記事", on_delete=models.SET_NULL, null=True, blank=True)
@@ -60,4 +65,6 @@ class Answers(BaseModel):
         verbose_name = "回答コメント"
         verbose_name_plural = "回答コメント"
 
+    def __str__(self):
+        return self.quesitons.title + "への回答"
 
