@@ -3,3 +3,4 @@ Django
 psycopg2
 # API構築用フレームワーク
 djangorestframework
+django-cors-headers
