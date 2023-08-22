@@ -1,0 +1,5 @@
+Django
+# postgreSQLへの接続ライブラリ
+psycopg2
+# API構築用フレームワーク
+djangorestframework
