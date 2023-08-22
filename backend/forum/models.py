@@ -44,7 +44,7 @@ class Questions(BaseModel):
     status = models.PositiveSmallIntegerField("ステータス", choices=status_choices, default=0)
     tags= models.ManyToManyField(
          Tags,
-         verbose_name='担当教員名',
+         verbose_name='タグ名',
      )
 
     class Meta:
@@ -57,7 +57,7 @@ class Questions(BaseModel):
 
 class Answers(BaseModel):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name="回答者", null=True, blank=True)
-    questions = models.ForeignKey(Questions, verbose_name="質問記事", on_delete=models.SET_NULL, null=True, blank=True)
+    question = models.ForeignKey(Questions, verbose_name="質問記事", on_delete=models.SET_NULL, null=True, blank=True)
     body = models.TextField("コメント", max_length=1000)
 
     class Meta:
@@ -66,5 +66,5 @@ class Answers(BaseModel):
         verbose_name_plural = "回答コメント"
 
     def __str__(self):
-        return self.quesitons.title + "への回答"
+        return self.question.title + "への回答"
 
