@@ -4,3 +4,14 @@ psycopg2
 # API構築用フレームワーク
 djangorestframework
 django-cors-headers
+# 環境変数を扱う
+django-environ==0.10.0
+# python manage.py shell_plusが使えるようになる
+django-extensions==3.2.3
+# デバッカーツール
+django-debug-toolbar==4.1.0
+# 論理削除を使うためのパッケージ
+django_boost==2.1
+# 入力規則を守っているかのパッケージ
+autopep8
+flake8
