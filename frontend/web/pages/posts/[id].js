@@ -32,6 +32,11 @@ const Post = () => {
             <h1>Post: {id}</h1>
             <p>{data.title}</p>
             <p>{data.body}</p>
+            <p>{data.user}</p>
+            <p>{data.status}</p>
+            <p>{data.tags}</p>
+            <p>{data.created_at}</p>
+            <p>{data.updated_at}</p>
         </div>
     );
 };
