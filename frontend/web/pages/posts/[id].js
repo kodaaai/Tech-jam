@@ -1,44 +1,39 @@
-import { useRouter } from "next/router";
-import { getAllPostIds, getPostData } from "../../lib/posts";
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router';
 
-//下記のコードはエラーが発生する
-// if (router.isFallback || !post) {
-//     return (
-//         <div>Loading...</div>
-//         );
-// }
-
-export default function PostData({post}){
+const Post = () => {
     const router = useRouter();
-    return(
+    const { id } = router.query;
+
+    const [data, setData] = useState([]);
+    const [status, setStatus] = useState([]);
+
+    useEffect(() => {
+        try {
+            fetch(`http://0.0.0.0:8000/api/post/${id}`)
+                .then(res => {
+                    setStatus(res.status);
+                    return res.json()
+                })
+                .then(resData => {
+                    setData(resData)
+                })
+        } catch (e) {
+            console.log('エラーです:', e);
+        }
+    }, [])
+
+
+    if (status == 404) return <div>データがありません...</div>;
+    if (status > 500) return <div>エラーです</div>;
+
+    return (
         <div>
-            <h1>{post.title}</h1>
-            <p>{post.body}</p>
-            <p>{post.status}</p>
-            <p>{post.tags}</p>
-            <p>{post.created_at}</p>
-            <p>{post.updated_at}</p>
+            <h1>Post: {id}</h1>
+            <p>{data.title}</p>
+            <p>{data.body}</p>
         </div>
-    )
+    );
 };
 
-// 投稿一覧のIDを取得
-export async function getStaticPaths(){
-    const paths=await getAllPostIds();
-    return {
-        paths,
-        fallback: false,
-    }
-}
-
-
-// 投稿詳細のデータを取得
-export async function getStaticProps({params}){
-    const post = await getPostData(params.id)
-    return {
-        props: {
-            post,
-        },
-        revalidate:3,
-    };
-}
+export default Post;
