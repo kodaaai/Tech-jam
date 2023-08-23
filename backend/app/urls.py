@@ -22,7 +22,8 @@ from .settings import DEBUG
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("api/hello/", hello),
+    path('api/', include("forum.urls")),
+    # path("api/hello/", hello),
 ]
 
 if DEBUG:
