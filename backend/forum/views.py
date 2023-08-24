@@ -1,6 +1,6 @@
 from rest_framework import generics
 from rest_framework_serializer_extensions.views import SerializerExtensionsAPIViewMixin
-from .serializers import PostListSerializer, PostDetailSerializer, PostCreateSerializer, AnswerListSerializer
+from .serializers import PostListSerializer, PostDetailSerializer, PostCreateSerializer, AnswerListSerializer, AnswerCreateSerializer
 from .models import Questions, Answers
 
 # class QuestionViewSet(viewsets.ModelViewSet):
@@ -23,3 +23,7 @@ class QuestionDetailView(generics.RetrieveAPIView):
 class AnswerListView(generics.ListAPIView):
     queryset=Answers.objects.all()
     serializer_class = AnswerListSerializer
+
+class AnswerCreateView(generics.CreateAPIView):
+    queryset=Answers.objects.all()
+    serializer_class = AnswerCreateSerializer

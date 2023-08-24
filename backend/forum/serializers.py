@@ -15,6 +15,11 @@ class AnswerListSerializer(serializers.ModelSerializer):
         model=Answers
         fields = ("id", "user", "body", "created_at", "updated_at")
 
+class AnswerCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Answers
+        fields = ("id", "user", "body", "question")
+
 class PostListSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%H")
     class Meta:
@@ -31,5 +36,5 @@ class PostDetailSerializer(serializers.ModelSerializer):
         fields = ("id", "user", "title", "body", "status", "tags", "created_at", "updated_at", "answers")
     def get_answers(self, obj):
         answers = Answers.objects.filter(question=obj)
-        answer_bodies = answers.values_list("body", flat=True)  # Extract 'body' values
+        answer_bodies = answers.values_list("body", flat=True) 
         return list(answer_bodies)

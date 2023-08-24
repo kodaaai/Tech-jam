@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router';
 
 const CreatePost = () => {
     const [user, setUser]=useState()
-    function submitpost() {
+    const [title, setTitle] = useState('');
+    const [question, setQuestion] = useState('');
+
+    function SubmitPost() {
         try {
             const obj = {
                 user : 1,
-                title : "新しいデータ",
-                body : "body",
+                title : String(title),
+                body : String(question),
                 status : 0,
                 tags : [1],
             };
@@ -25,18 +27,18 @@ const CreatePost = () => {
         }
     };
     return (
-        <div> 
+        <div>
             <form>
                 <label htmlFor="user">ユーザー</label>
-                <input type="text" id="user" />
+                <input type="text" id="user" value={user} onChange={(e) => setUser(e.target.value)} />
 
                 <label htmlFor="title">タイトル</label>
-                <input type="text" id="title" />
+                <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
 
                 <label htmlFor="content">内容</label>
-                <textarea id="content"></textarea>
-            </form> 
-            <button onClick={submitpost}>送信する</button>
+                <textarea id="content" value={question} onChange={(e) => setQuestion(e.target.value)}></textarea>
+            </form>
+            <button onClick={SubmitPost}>送信する</button>
         </div>
     );
 };
