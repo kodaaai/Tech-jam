@@ -11,8 +11,6 @@ const CreatePost = () => {
                 body : "body",
                 status : 0,
                 tags : [1],
-                created_at : "2023-07-28T00:31:09.732Z",
-                updated_at : "2023-07-28T00:31:09.732Z"
             };
             const method = "POST";
             const headers = {
