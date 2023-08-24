@@ -16,3 +16,5 @@ django_boost==2.1
 autopep8
 flake8
 django-crispy-forms
+# 逆参照を使うためのパッケージ
+djangorestframework-serializer-extensions
