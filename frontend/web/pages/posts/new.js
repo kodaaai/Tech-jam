@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
 
-
-
-
 const CreatePost = () => {
-    const router = useRouter();
-    const { id } = router.query;
-    
-    const [data, setData] = useState([]);
-    const [status, setStatus] = useState([]);
-
-    useEffect(() => {
+    const [user, setUser]=useState()
+    function submitpost() {
         try {
             const obj = {
                 user : 1,
-                title :"通信テスト",
-                body:"テスト",
-                status:0,
-                tags:1,
+                title : "title",
+                body : "body",
+                status : 0,
+                tags : [1],
+                created_at : "2023-07-28T00:31:09.732Z",
+                updated_at : "2023-07-28T00:31:09.732Z"
             };
             const method = "POST";
             const headers = {
@@ -26,25 +20,26 @@ const CreatePost = () => {
                 };
             const body = JSON.stringify(obj);
             
-            fetch("http://0.0.0.0:8000/api/post/new/", {method, headers, body}).then((res)=> res.json()).then(console.log).catch(console.error);
+            fetch("http://0.0.0.0:8000/api/post/new", {method, headers, body}).then((res)=> res.json()).then(console.log).catch(console.error);
 
         } catch (e) {
             console.log('エラーです:', e);
         }
-    }, [id])
-
-
-    if (status == 404) return <div>データがありません...</div>;
-    if (status > 500) return <div>エラーです</div>;
-
+    };
     return (
-        <div>    
+        <div> 
             <form>
-                <label>タイトル</label>
-                <input></input>
-            </form>
+                <label htmlFor="user">ユーザー</label>
+                <input type="text" id="user" />
+
+                <label htmlFor="title">タイトル</label>
+                <input type="text" id="title" />
+
+                <label htmlFor="content">内容</label>
+                <textarea id="content"></textarea>
+            </form> 
+            <button onClick={submitpost}>送信する</button>
         </div>
     );
 };
-
 export default CreatePost;
