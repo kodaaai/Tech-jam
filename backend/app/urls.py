@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .hello import hello
 import debug_toolbar
 from .settings import DEBUG
 
