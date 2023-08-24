@@ -7,7 +7,7 @@ const CreatePost = () => {
         try {
             const obj = {
                 user : 1,
-                title : "title",
+                title : "新しいデータ",
                 body : "body",
                 status : 0,
                 tags : [1],

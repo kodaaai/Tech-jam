@@ -11,10 +11,13 @@ const Navigation = () => {
                     <Link href="/">
                         <a className="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">ホーム</a>
                     </Link>
-                    <Link href="/">
+                    <Link href="posts/new">
                         <a className="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">質問を投稿する</a>
                     </Link>
-                    <Link href="/">
+                    <Link href="http://0.0.0.0:8000/user/login/">
+                        <a className="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">ログイン</a>
+                    </Link>
+                    <Link href="http://0.0.0.0:8000/user/logout/">
                         <a className="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">ログアウト</a>
                     </Link>
                 </nav>
