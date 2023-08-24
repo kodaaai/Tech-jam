@@ -2,11 +2,15 @@ from rest_framework import generics
 from .serializers import PostSerializer
 from .models import Questions
 
-#リストを表示することができる
-class PostView(generics.ListAPIView):
+#Questionsの一覧・詳細・作成・編集処理
+class QuestionCreateView(generics.CreateAPIView):
+    queryset=Questions.objects.all()
+    serializer_class=PostSerializer
+
+class QuestionListView(generics.ListAPIView):
     queryset=Questions.objects.all()
     serializer_class= PostSerializer
 
-class PostDetailView(generics.RetrieveAPIView):
+class QuestionDetailView(generics.RetrieveAPIView):
     queryset=Questions.objects.all()
     serializer_class=PostSerializer
