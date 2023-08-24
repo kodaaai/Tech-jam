@@ -21,7 +21,7 @@ const Post = () => {
         } catch (e) {
             console.log('エラーです:', e);
         }
-    }, [])
+    }, [id])
 
 
     if (status == 404) return <div>データがありません...</div>;
