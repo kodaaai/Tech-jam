@@ -1,7 +1,10 @@
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react'
 
+
 const CreatePost = () => {
-    const [user, setUser]=useState()
+    const router= useRouter();
+    const [user, setUser]=useState();
     const [title, setTitle] = useState('');
     const [question, setQuestion] = useState('');
 
@@ -21,7 +24,7 @@ const CreatePost = () => {
             const body = JSON.stringify(obj);
             
             fetch("http://0.0.0.0:8000/api/post/new", {method, headers, body}).then((res)=> res.json()).then(console.log).catch(console.error);
-
+            router.push("/");
         } catch (e) {
             console.log('エラーです:', e);
         }

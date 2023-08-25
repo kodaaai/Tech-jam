@@ -41,7 +41,8 @@ const Post = () => {
                 };
             const body = JSON.stringify(obj);
             
-            fetch(`http://0.0.0.0:8000/api/post/${id}/create`, {method, headers, body}).then((res)=> res.json()).then(console.log).catch(console.error);
+            fetch(`http://0.0.0.0:8000/api/post/${id}/create`, {method, headers, body}).then((res)=> res.json()).catch(console.error);
+            router.reload();
 
         } catch (e) {
             console.log('エラーです:', e);
@@ -62,6 +63,7 @@ const Post = () => {
                  <textarea id="content" value={answer} onChange={(e) => setAnswer(e.target.value)} ></textarea>
              </form> 
              <button onClick={SubmitPost}>回答する</button>
+             <h2>⚫︎回答一覧⚫︎</h2>
              {data.answers && data.answers.map(answers => ( //dataが一つ以上の場合に処理をぶん回している。
                   <p className='max-w-screen-md text-gray-500 md:text-lg'>{`◉ ${answers}`}</p>
              ))}
