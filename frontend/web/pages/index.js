@@ -34,8 +34,6 @@ export default function Home() {
       setFilterdDatas(filteredList);
       return;
     }
-
-
     setFilterdDatas(datas);
     return;
   }
