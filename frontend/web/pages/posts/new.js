@@ -1,13 +1,25 @@
 import { useRouter } from 'next/router';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
+
+const question_tem= `・環境
+　・本番環境 or ローカル環境
+　・OS: 
+　・使用言語：（できればバージョンもお願いします）
+
+・やりたいこと
+（実現させたい処理やソースコードを記入してください）
+
+・発生しているエラー
+（エラー文を貼り付けてください）
+
+・自分で試したこと
+（自分で試したコードや参考URLを貼り付けてください。）`
 
 
 const CreatePost = () => {
     const router= useRouter();
-    const [user, setUser]=useState();
     const [title, setTitle] = useState('');
-    const [question, setQuestion] = useState(
-        '・やりたいこと・実行環境・エラー概要・試したこと');
+    const question = question_tem;
 
     function SubmitPost() {
         try {
@@ -44,14 +56,14 @@ const CreatePost = () => {
                         <div class="flex flex-wrap -m-2">
                             <div class="p-2 w-full">
                                 <div class="relative">
-                                    <label for="email" class="leading-7 text-sm text-gray-600">タイトル</label>
+                                    <label for="email" class="leading-7 text-sm text-gray-600">タイトル:</label>
                                     <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
                             <div class="p-2 w-full">
                                 <div class="relative">
-                                    <label for="message" class="leading-7 text-sm text-gray-600">質問内容</label>
-                                    <textarea id="message" name="message" value={question} onChange={(e) => setQuestion(e.target.value)} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                    <label for="message" class="leading-7 text-sm text-gray-600">質問内容:</label>
+                                    <textarea id="message" name="message" rows="15" value={question} onChange={(e) => setQuestion(e.target.value)} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-50 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                 </div>
                             </div>
                             <div class="p-2 w-full">

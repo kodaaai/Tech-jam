@@ -50,13 +50,14 @@ const Post = () => {
     };
     return (
         <div class="container px-5 py-24 mx-auto">
-            <div class="flex flex-col mb-3 pr-0 w-full md:w-auto md:text-left text-center  border-b-2">
+            <div class="flex flex-col mb-3 pr-0 w-full md:w-auto md:text-left text-center border-b-2">
                 <h2 class="mb-1 font-semibold text-indigo-500 md:mb-3 lg:text-lg">Question</h2>
                 <h1 class="md:text-3xl text-2xl font-medium mb-3 title-font text-gray-900 ">{data.title}</h1>
             </div>
             <div class="flex flex-col md:pr-10 md:mb-0 pb-3 mb-3 pr-0 w-full md:w-auto md:text-left text-center">
-                <p class="md:text-l text-l text-right font-medium font-bold text-gray-600">投稿日時：{data.created_at}    更新日時：{data.updated_at}</p>           
-                <p class="md:text-xl text-xl font-medium font-bold text-gray-700">{data.body}</p>
+                <p class="md:text-l text-l text-right font-medium font-bold text-gray-600 mb-2">投稿日時：{data.created_at}    更新日時：{data.updated_at}</p>
+                <p class="md:text-l text-l text-left font-medium text-gray-600 mb-2">質問内容：</p>
+                <p class="md:text-xl text-xl font-medium font-bold text-gray-700 w-full">{data.body}</p>
             </div>
             <div class="flex w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
                 <div class="relative flex-grow w-full">
@@ -67,11 +68,13 @@ const Post = () => {
             </div>
             <div class="p-2 w-full py-2">
                 <button onClick={SubmitPost} class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-12 focus:outline-none hover:bg-indigo-600 rounded text-lg">回答する</button>
-            </div>    
-             <p class="mb-1 font-semibold text-indigo-500 md:mb-3 lg:text-lg">Answers</p>
-             <h2 class="mb-4 text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">回答一覧</h2>
+            </div>
+            <p class="mb-1 font-semibold text-indigo-500 md:mb-3 lg:text-lg">Answers</p>
+            <div className='mb-1 border-b-2'>
+                <h2 class=" text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">回答一覧</h2>
+            </div>
              {data.answers && data.answers.map(answers => ( //dataが一つ以上の場合に処理をぶん回している。
-                  <p className='max-w-screen-md text-gray-500 md:text-lg'>{`◉ ${answers}`}</p>
+                  <p className='max-w-screen-md text-gray-800 md:text-lg mt-3'>{`◉ ${answers}`}</p>
              ))}
         </div>
     );

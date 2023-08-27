@@ -94,7 +94,7 @@ export default function Home() {
             {filteredDatas && filteredDatas.map(data => ( //dataが一つ以上の場合に処理をぶん回している。
               <li key={data.id}>
                 <Link href={`/posts/${data.id}`}> 
-                  <p className='max-w-screen-md text-gray-500 md:text-lg'>{`◉ ${data.created_at} : ${data.title}`}</p>
+                  <p className='max-w-screen-md text-gray-500 md:text-lg cursor-pointer'>{`◉ ${data.created_at} : ${data.title}`}</p>
                 </Link>
               </li>
             ))}
