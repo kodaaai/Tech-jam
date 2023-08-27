@@ -1,10 +1,11 @@
 #ここはjsonファイルに変換するファイルとなります。
 from rest_framework import serializers
 from rest_framework_serializer_extensions.serializers import SerializerExtensionsMixin #逆参照を使うためのパッケージ
-from .models import Questions, Answers
+from .models import Questions, Answers, Tags
 
 
 class PostCreateSerializer(serializers.ModelSerializer):
+    # tags=serializers.StringRelatedField(many=True)
     class Meta:
         model=Questions
         fields = ("id", "user", "title", "body", "status", "tags",)
@@ -21,14 +22,16 @@ class AnswerCreateSerializer(serializers.ModelSerializer):
         fields = ("id", "user", "body", "question")
 
 class PostListSerializer(serializers.ModelSerializer):
+    tags=serializers.StringRelatedField(many=True)
     created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%H")
     class Meta:
         model=Questions
-        fields = ("id", "title", "created_at",)
+        fields = ("id", "title", "created_at", "tags") 
     
 
 class PostDetailSerializer(serializers.ModelSerializer):
     answers = serializers.SerializerMethodField()
+    tags=serializers.StringRelatedField(many=True)
     created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%H")
     updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%H")
     class Meta:
