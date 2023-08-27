@@ -3,7 +3,7 @@ import Link from 'next/link'
 const Navigation = () => {
     return (
         <div>
-            <header className="flex items-center justify-between py-4 md:py-8">
+            <header className="flex items-center justify-between py-4 px-6">
                 <Link href="/" className="inline-flex items-center gap-2.5 text-2xl font-bold text-black md:text-3xl">
                 <a className="inline-flex items-center gap-2.5 text-2xl font-bold text-indigo-500 md:text-3xl" aria-label="logo">Qikoo</a>
                 </Link>
