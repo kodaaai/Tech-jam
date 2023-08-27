@@ -13,7 +13,7 @@ class QuestionCreateView(generics.CreateAPIView):
     serializer_class=PostCreateSerializer
 
 class QuestionListView(generics.ListAPIView):
-    queryset=Questions.objects.all()
+    queryset=Questions.objects.all().order_by("-id")
     serializer_class=PostListSerializer 
 
 class QuestionDetailView(generics.RetrieveAPIView):
@@ -21,7 +21,7 @@ class QuestionDetailView(generics.RetrieveAPIView):
     serializer_class=PostDetailSerializer
 
 class AnswerListView(generics.ListAPIView):
-    queryset=Answers.objects.all()
+    queryset=Answers.objects.all().order_by("-id")
     serializer_class = AnswerListSerializer
 
 class AnswerCreateView(generics.CreateAPIView):
