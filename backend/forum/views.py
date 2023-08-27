@@ -1,12 +1,29 @@
 from rest_framework import generics
-from .serializers import PostSerializer
-from .models import Questions
+from rest_framework_serializer_extensions.views import SerializerExtensionsAPIViewMixin
+from .serializers import PostListSerializer, PostDetailSerializer, PostCreateSerializer, AnswerListSerializer, AnswerCreateSerializer
+from .models import Questions, Answers
 
-#リストを表示することができる
-class PostView(generics.ListAPIView):
-    queryset=Questions.objects.all()
-    serializer_class= PostSerializer
+# class QuestionViewSet(viewsets.ModelViewSet):
+#     queryset=Questions.objects.all()
+#     serializer_class=PostSerializer
 
-class PostDetailView(generics.RetrieveAPIView):
+#Questionsの一覧・詳細・作成・編集処理
+class QuestionCreateView(generics.CreateAPIView):
     queryset=Questions.objects.all()
-    serializer_class=PostSerializer
+    serializer_class=PostCreateSerializer
+
+class QuestionListView(generics.ListAPIView):
+    queryset=Questions.objects.all()
+    serializer_class=PostListSerializer 
+
+class QuestionDetailView(generics.RetrieveAPIView):
+    queryset=Questions.objects.all()
+    serializer_class=PostDetailSerializer
+
+class AnswerListView(generics.ListAPIView):
+    queryset=Answers.objects.all()
+    serializer_class = AnswerListSerializer
+
+class AnswerCreateView(generics.CreateAPIView):
+    queryset=Answers.objects.all()
+    serializer_class = AnswerCreateSerializer
